@@ -2,9 +2,9 @@
     <form method="POST" action="/quote">
         @csrf
         <div class="col-span-full">
-            <label for="quote" class="block text-sm/6 font-medium text-white">Send a quote!</label>
+            <label for="text" class="block text-sm/6 font-medium text-white">Send a quote!</label>
             <div class="mt-2">
-                <textarea id="quote" name="quote" rows="3"
+                <textarea id="text" name="text" rows="3"
                           class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"></textarea>
             </div>
             <p class="mt-3 text-sm/6 text-gray-400">Show off your poetry!</p>
@@ -17,7 +17,9 @@
         <h2 class="font-bold text-2xl">Quotes</h2>
         <ul class="mt-2">
             @foreach($quotes as $quote)
-                <li class="mt-1">{{$quote->text}}</li>
+                <li class="mt-1">
+                    <a href="/quote/{{$quote->id}}/edit">{{$quote->text}}</a>
+                </li>
             @endforeach
         </ul>
     </div>
