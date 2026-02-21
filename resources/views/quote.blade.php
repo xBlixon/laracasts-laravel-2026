@@ -14,10 +14,10 @@
         </div>
     </form>
     <div class="mt-6">
-        <h2 class="font-bold text-2xl">My quotes</h2>
+        <h2 class="font-bold text-2xl">Quotes</h2>
         <ul class="mt-2">
-            @foreach($myQuotes as $quote)
-                <li class="mt-1">{{$quote}}</li>
+            @foreach($quotes as $quote)
+                <li class="mt-1">{{$quote->text}}</li>
             @endforeach
         </ul>
     </div>

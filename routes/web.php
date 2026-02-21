@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Quote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,15 +17,17 @@ Route::get('/', function () {
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 Route::get('/quote', function () {
-    $myQuotes = session()->get('quotes', []);
+    $quotes = Quote::all();
     return view('quote',
         [
-            'myQuotes' => $myQuotes
+            'quotes' => $quotes
         ]);
 })->name('quote');
 
 Route::post('/quote', function () {
-    $quote = request('quote');
-    session()->push('quotes', $quote);
+    $text = request('quote');
+    Quote::create([
+        'text' => $text
+    ]);
     return redirect('/quote');
 })->name('quote_post');
