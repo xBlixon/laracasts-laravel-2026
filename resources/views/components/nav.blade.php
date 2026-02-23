@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 shadow-sm">
+<div class="navbar bg-base-200 shadow-sm">
     <div class="navbar-start">
         <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -23,7 +23,18 @@
             <li><a href="/quote">Quote</a></li>
         </ul>
     </div>
-    <div class="navbar-end">
-        <a class="btn">Button</a>
+    <div class="navbar-end space-x-2">
+        @guest
+            <a class="btn btn-primary" href="/register">Register</a>
+            <a class="btn btn-secondary" href="/login">Log In</a>
+        @endguest
+
+        @auth
+            <form action="/logout" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-warning">Logout</button>
+            </form>
+        @endauth
     </div>
 </div>

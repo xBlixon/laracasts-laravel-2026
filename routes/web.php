@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\QuoteController;
 use App\Models\Quote;
 use Illuminate\Http\Request;
@@ -25,3 +27,10 @@ Route::get('/quote/{quote}/edit', [QuoteController::class, 'edit'])->name('quote
 Route::patch('/quote/{quote}', [QuoteController::class, 'update'])->name('quote_update');
 Route::post('/quote', [QuoteController::class, 'store'])->name('quote_post');
 Route::delete('/quote/{quote}', [QuoteController::class, 'destroy'])->name('quote_destroy');
+
+Route::get('/register', [RegistrationController::class, 'create'])->name('register_create');
+Route::post('/register', [RegistrationController::class, 'store'])->name('register_store');
+
+Route::get('/login', [SessionController::class, 'create'])->name('login_create');
+Route::post('/login', [SessionController::class, 'store'])->name('login_store');
+Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout');
