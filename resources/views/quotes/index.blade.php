@@ -3,15 +3,18 @@
         <a href="/quote/create" class="mt-5 block">Make a new quote</a>
         <div class="mt-6">
             <h2 class="font-bold text-2xl">Quotes</h2>
-            <ul class="mt-2">
+            <div class="mt-2 grid grid-cols-2 gap-x-6 gap-y-4">
                 @foreach($quotes as $quote)
-                    <li class="mt-1">
-                        <a href="/quote/{{$quote->id}}/edit">{{$quote->text}}</a>
-                    </li>
+                    <x-quote-card href="/quote/{{$quote->id}}/edit">
+                        {{ $quote->text }}
+                    </x-quote-card>
                 @endforeach
-            </ul>
+            </div>
         </div>
     @else
-        <h1 class="text-2xl mt-5">No quotes exist. <a href="/quote/create" class="underline accent-blue-300">Be the pioneer!</a></h1>
+        <h1 class="text-2xl mt-5">No quotes exist.
+            <a href="/quote/create" class="underline accent-blue-300"
+            >Be the pioneer!</a>
+        </h1>
     @endif
 </x-layout>

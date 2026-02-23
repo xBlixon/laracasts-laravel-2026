@@ -3,23 +3,20 @@
 ])
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <title>{{ $title }}</title>
 </head>
-<body class="bg-gray-800 p-6 max-w-xl mx-auto text-white">
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About us</a>
-        <a href="/contact">Contact us</a>
-        <a href="/quote">Quote</a>
-    </nav>
-    <main>
+<body>
+    <x-nav/>
+    <main class="max-w-3xl mx-auto">
         {{ $slot }}
     </main>
 </body>
