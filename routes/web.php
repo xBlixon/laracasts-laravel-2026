@@ -40,3 +40,6 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [SessionController::class, 'store'])->name('login_store');
 });
 
+Route::get('/admin', function () {
+    return "Admin area";
+})->can('admin');

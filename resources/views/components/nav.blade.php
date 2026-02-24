@@ -10,7 +10,10 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About us</a></li>
                 <li><a href="/contact">Contact us</a></li>
-                <li><a href="/quote">Quote</a></li>
+                <li><a href="/quote">Quotes</a></li>
+                @can('admin')
+                <li><a href="/admin">Admin</a></li>
+                @endcan
             </ul>
         </div>
         <a class="btn btn-ghost text-xl">Laravel 2026</a>
@@ -21,6 +24,9 @@
             <li><a href="/about">About us</a></li>
             <li><a href="/contact">Contact us</a></li>
             <li><a href="/quote">Quotes</a></li>
+            @can('admin')
+            <li><a href="/admin">Admin</a></li>
+            @endcan
         </ul>
     </div>
     <div class="navbar-end space-x-2">
