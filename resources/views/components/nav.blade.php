@@ -20,7 +20,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">About us</a></li>
             <li><a href="/contact">Contact us</a></li>
-            <li><a href="/quote">Quote</a></li>
+            <li><a href="/quote">Quotes</a></li>
         </ul>
     </div>
     <div class="navbar-end space-x-2">
@@ -30,6 +30,7 @@
         @endguest
 
         @auth
+            <a href="/quote/create" class="btn btn-info text-lg">+</a>
             <form action="/logout" method="POST">
                 @csrf
                 @method('DELETE')

@@ -14,7 +14,7 @@
     @else
         <h1 class="text-2xl mt-5">No quotes exist.
             <a href="/quote/create" class="underline accent-blue-300"
-            >Be the pioneer!</a>
+            >Start your poetic journey!</a>
         </h1>
     @endif
 </x-layout>

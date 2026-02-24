@@ -1,18 +1,14 @@
 <x-layout>
     <form method="POST" action="/quote">
         @csrf
-        <div class="col-span-full">
-            <label for="text" class="block text-sm/6 font-medium text-white">Send a quote!</label>
-            <div class="mt-2">
-                <textarea id="text" name="text" rows="3"
-                          class="textarea w-full @error('text') textarea-error @enderror"></textarea>
+        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 mx-auto">
+            <legend class="fieldset-legend">New Quote</legend>
 
-            </div>
-            <x-forms.error name='text'/>
-            <p class="mt-3 text-sm/6 text-gray-400">Show off your poetry!</p>
-        </div>
-        <div class="mt-3 flex items-center gap-x-6">
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
+            <label class="label">Quote</label>
+            <textarea type="text" class="textarea h-24" name="text" placeholder="Show off your poetry!"
+            ></textarea>
+
+            <button class="btn btn-neutral mt-4">Publish</button>
+        </fieldset>
     </form>
 </x-layout>
