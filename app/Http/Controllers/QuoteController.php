@@ -13,9 +13,7 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        $quotes = Quote::query()->where([
-            'user_id' => auth()->id(),
-        ])->get();
+        $quotes = auth()->user()->quotes;
 
         return view('quotes.index', [
             'quotes' => $quotes
@@ -36,9 +34,8 @@ class QuoteController extends Controller
     public function store(QuoteRequest $request)
     {
         $text = request('text');
-        Quote::create([
-            'text' => $text,
-            'user_id' => auth()->id()
+        auth()->user()->quotes()->create([
+            'text' => $text
         ]);
         return redirect('/quote');
     }
