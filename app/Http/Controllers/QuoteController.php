@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuoteRequest;
 use App\Models\Quote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class QuoteController extends Controller
 {
@@ -45,6 +46,7 @@ class QuoteController extends Controller
      */
     public function show(Quote $quote)
     {
+        Gate::authorize('owns', $quote);
         return view('quotes.show', [
             'quote' => $quote
         ]);
@@ -55,6 +57,7 @@ class QuoteController extends Controller
      */
     public function edit(Quote $quote)
     {
+        Gate::authorize('owns', $quote);
         return view('quotes.edit', [
             'quote' => $quote
         ]);
@@ -65,6 +68,7 @@ class QuoteController extends Controller
      */
     public function update(QuoteRequest $request, Quote $quote)
     {
+        Gate::authorize('owns', $quote);
         $quote->update([
             'text' => request('text')
         ]);
@@ -77,6 +81,7 @@ class QuoteController extends Controller
      */
     public function destroy(Quote $quote)
     {
+        Gate::authorize('owns', $quote);
         $quote->delete();
         return redirect('/quote');
     }
