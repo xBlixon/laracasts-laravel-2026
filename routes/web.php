@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home',
         [
-            'name' => request('name', "Guest"),
+            'name' => auth()->user()->name ?? "Guest"
         ]);
 }
 

@@ -2,20 +2,18 @@
     <form method="POST" action="/quote/{{ $quote->id }}">
         @csrf
         @method('PATCH')
-        <div class="col-span-full">
-            <label for="text" class="block text-sm/6 font-medium text-white">Send a quote!</label>
-            <div class="mt-2">
-                <textarea id="text" name="text" rows="3"
-                          class="textarea w-full @error('text') textarea-error @enderror"
-                >{{ $quote->text }}</textarea>
-                <x-forms.error name="text"/>
+        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 mx-auto">
+            <legend class="fieldset-legend">Edit Quote</legend>
+
+            <label class="label">Quote</label>
+            <textarea type="text" class="textarea h-24" name="text" placeholder="Tweak your poetry as you wish!"
+            >{{$quote->text}}</textarea>
+
+            <div class="card-actions justify-end mr-auto">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" form="delete-quote" class="btn btn-neutral">Delete</button>
             </div>
-            <p class="mt-3 text-sm/6 text-gray-400">Show off your poetry!</p>
-        </div>
-        <div class="mt-3 flex items-center gap-x-2">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="submit" form="delete-quote" class="btn btn-neutral">Delete</button>
-        </div>
+        </fieldset>
     </form>
 
     <form method="POST" action="/quote/{{$quote->id}}" id="delete-quote">
