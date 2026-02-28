@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\QuoteRequest;
 use App\Models\Quote;
+use App\Notifications\QuotePublished;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -34,10 +35,13 @@ class QuoteController extends Controller
      */
     public function store(QuoteRequest $request)
     {
-        $text = request('text');
-        auth()->user()->quotes()->create([
-            'text' => $text
+        $user = auth()->user();
+        $quote = $user->quotes()->create([
+            'text' => request('text')
         ]);
+
+        $user->notify(new QuotePublished($quote));
+
         return redirect('/quote');
     }
 
