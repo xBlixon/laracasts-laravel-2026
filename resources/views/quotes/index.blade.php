@@ -5,7 +5,7 @@
             <h2 class="font-bold text-2xl">Quotes</h2>
             <div class="mt-2 grid grid-cols-2 gap-x-6 gap-y-4">
                 @foreach($quotes as $quote)
-                    <x-quote-card href="/quote/{{$quote->id}}/edit">
+                    <x-quote-card href="/quote/{{$quote->id}}">
                         {{ $quote->text }}
                     </x-quote-card>
                 @endforeach
